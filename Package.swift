@@ -5,12 +5,20 @@ import PackageDescription
 import CompilerPluginSupport
 
 let package = Package(
-    name: "Bibbi-Macro",
-    platforms: [.macOS(.v10_15), .iOS(.v13), .tvOS(.v13), .watchOS(.v6), .macCatalyst(.v13)],
+    name: "Bibbi-Package",
+    platforms: [
+        .macOS(.v10_15),
+            .iOS(.v13)
+    ],
     products: [
         .library(
-            name: "Bibbi-Macro",
-            targets: ["Bibbi-Macro"]
+            name: "Macros",
+            targets: ["MacrosInterface"]
+        ),
+        
+        .executable(
+            name: "MacrosPlayground",
+            targets: ["MacrosPlayground"]
         )
     ],
     dependencies: [
@@ -18,23 +26,39 @@ let package = Package(
     ],
     targets: [
         .macro(
-            name: "Bibbi-Macros",
+            name: "MacrosImplementation",
             dependencies: [
+                .product(name: "SwiftSyntax", package: "swift-syntax"),
                 .product(name: "SwiftSyntaxMacros", package: "swift-syntax"),
-                .product(name: "SwiftCompilerPlugin", package: "swift-syntax")
-            ]
+                .product(name: "SwiftCompilerPlugin", package: "swift-syntax"),
+                .product(name: "SwiftDiagnostics", package: "swift-syntax")
+            ],
+            path: "Sources/Macros/Implementation"
         ),
 
-        .target(name: "Bibbi-Macro", dependencies: ["Bibbi-Macros"]),
+        .target(
+            name: "MacrosInterface",
+            dependencies: [
+                "MacrosImplementation"
+            ],
+            path: "Sources/Macros/Interface"
+        ),
 
-        .executableTarget(name: "Bibbi-Client", dependencies: ["Bibbi-Macro"]),
+        .executableTarget(
+            name: "MacrosPlayground",
+            dependencies: [
+                "MacrosInterface"
+            ],
+            path: "Sources/Macros/Playground"
+        ),
 
         .testTarget(
             name: "Bibbi-MacroTests",
             dependencies: [
-                "Bibbi-Macros",
+                "MacrosInterface",
                 .product(name: "SwiftSyntaxMacrosTestSupport", package: "swift-syntax"),
-            ]
+            ],
+            path: "Tests/Macros"
         ),
     ]
 )
