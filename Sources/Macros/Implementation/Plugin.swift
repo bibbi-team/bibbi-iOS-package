@@ -11,6 +11,7 @@ import SwiftSyntaxMacros
 @main
 struct Bibbi_MacroPlugin: CompilerPlugin {
     var providingMacros: [Macro.Type] = [
-        StringifyMacro.self
+        URLMacro.self,
+        DeprecatedMacro.self
     ]
 }
