@@ -1,51 +1,13 @@
-<img src="https://github.com/rlarjsdn3/allen-uikit-learning-notes/assets/21079970/7e41818d-a11f-499d-9e2d-fca4efe74fe8" align="center" width="150" height="150">
+<img src="https://github.com/rlarjsdn3/swift-macro-playground/assets/21079970/03ea4a38-951a-450f-9f38-36520b994e18" align="center" width="150" height="150"> </br>
 
-Bibbi Package는 삐삐(Bibbi) 앱을 개발하는 데 유용한 `Macro`가 포함되어 있습니다. 해당 리포지토리는 구현된 매크로의 사용 방법을 소개하고 있습니다. 
+Bibbi Package는 삐삐(Bibbi) 앱을 개발하는 데 유용한 `매크로`가 포함되어 있습니다. 해당 리포지토리는 구현된 매크로의 기본 컨셉과 매크로를 활용한 적용법을 명시하고 있습니다. 매크로 예제 코드는 [Playground](Sources/Macros/Playground)에서 찾아보실 수 있으며, 자세한 사용법은 각 매크로에 `Option`키를 누르면 확인할 수 있습니다. </br>
 
-## Table Of Content
+아래는 구현된 매크로의 목록을 보여줍니다.
 
-* **Freestanding**
-  + Expression 
-    * [#URL](#URL)
-    
-* **Attched**
-  + MemberAttribute
-    * [@Deprecated](#Deprecated)
+## Table Of Macros
 
-## Freestanding
+* [#URL]()
 
-### Expression
-
-#### URL
-
-```swift
-let zizi = #URL("https://rlarjsdn3.github.io")
-
-// expanding a macro
-let zizi = URL(string: "https://rlarjsdn3.github.io")!
-```
-
-## Attahced
-
-### MemberAttribute
-
-#### Deprecated
-
-```swift
-@Deprecated
-class HomeUseCase {
-    func execute() { ... }
-}
-
-// expanding a macro
-class HomeUseCase {
-    @available(*, deprecated)
-    func execute() { ... }
-}
-```
-
-
-## ChangeLog
-
-* v0.1.0
-   + (공란)
+* [@Codable]()
+* [@CodableKey]()
+* [@Deprecated]()

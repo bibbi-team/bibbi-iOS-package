@@ -11,6 +11,8 @@ import SwiftSyntaxMacros
 @main
 struct Bibbi_MacroPlugin: CompilerPlugin {
     var providingMacros: [Macro.Type] = [
+        CodableKeyMacro.self,
+        CodableMacro.self,
         URLMacro.self,
         DeprecatedMacro.self
     ]
