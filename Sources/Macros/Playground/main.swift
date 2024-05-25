@@ -8,6 +8,11 @@
 import MacrosInterface
 
 
+// MARK: - Complex Macro
+
+runComplexMacorsPlayground()
+
+
 // MARK: - Expression Macros
 
 runExressionMacrosPlayground()
@@ -16,3 +21,6 @@ runExressionMacrosPlayground()
 // MARK: - MemberAttribute Macros
 
 runMemberAttributeMacrosPlayground()
+
+
+
