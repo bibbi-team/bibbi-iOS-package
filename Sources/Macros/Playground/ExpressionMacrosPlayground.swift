@@ -10,7 +10,7 @@ import MacrosInterface
 
 func runExressionMacrosPlayground() {
     
-    // MARK: - #URL
+    // MARK: - URL Expression
     let url = #URL("htps://www.apple.com/kr/")
     print(url)
 

@@ -7,7 +7,7 @@
 
 import Foundation
 
-// MARK: - #URL
+// MARK: - URL Expression
 
 @freestanding(expression)
 public macro URL(_ s: String) -> URL = #externalMacro(

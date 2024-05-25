@@ -11,3 +11,8 @@ import MacrosInterface
 // MARK: - Expression Macros
 
 runExressionMacrosPlayground()
+
+
+// MARK: - MemberAttribute Macros
+
+runMemberAttributeMacrosPlayground()
