@@ -23,7 +23,8 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/apple/swift-syntax.git", from: "509.0.0"),
-        .package(url: "https://github.com/ReactorKit/ReactorKit.git", from: "3.2.0")
+        .package(url: "https://github.com/ReactorKit/ReactorKit.git", from: "3.2.0"),
+        .package(url: "https://github.com/pointfreeco/swift-dependencies", from: "1.3.0")
     ],
     targets: [
         .macro(
@@ -40,7 +41,9 @@ let package = Package(
         .target(
             name: "MacrosInterface",
             dependencies: [
-                "MacrosImplementation"
+                "MacrosImplementation",
+                .product(name: "ReactorKit", package: "ReactorKit"),
+                .product(name: "Dependencies", package: "swift-dependencies")
             ],
             path: "Sources/Macros/Interface"
         ),
@@ -48,8 +51,7 @@ let package = Package(
         .executableTarget(
             name: "MacrosPlayground",
             dependencies: [
-                "MacrosInterface",
-                .product(name: "ReactorKit", package: "ReactorKit")
+                "MacrosInterface"
             ],
             path: "Sources/Macros/Playground"
         ),
