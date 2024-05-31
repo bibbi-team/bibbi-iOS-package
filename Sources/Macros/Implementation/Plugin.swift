@@ -13,6 +13,7 @@ struct Bibbi_MacroPlugin: CompilerPlugin {
     var providingMacros: [Macro.Type] = [
         CodableKeyMacro.self,
         CodableMacro.self,
+        WrapperMacro.self,
         URLMacro.self,
         DeprecatedMacro.self
     ]

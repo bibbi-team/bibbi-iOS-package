@@ -7,8 +7,8 @@ import CompilerPluginSupport
 let package = Package(
     name: "Bibbi-Package",
     platforms: [
-        .macOS(.v10_15),
-            .iOS(.v13)
+        .iOS(.v15),
+        .macOS(.v10_15)
     ],
     products: [
         .library(
@@ -23,6 +23,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/apple/swift-syntax.git", from: "509.0.0"),
+        .package(url: "https://github.com/ReactorKit/ReactorKit.git", from: "3.2.0")
     ],
     targets: [
         .macro(
@@ -31,7 +32,7 @@ let package = Package(
                 .product(name: "SwiftSyntax", package: "swift-syntax"),
                 .product(name: "SwiftSyntaxMacros", package: "swift-syntax"),
                 .product(name: "SwiftCompilerPlugin", package: "swift-syntax"),
-                .product(name: "SwiftDiagnostics", package: "swift-syntax")
+                .product(name: "SwiftDiagnostics", package: "swift-syntax"),
             ],
             path: "Sources/Macros/Implementation"
         ),
@@ -47,7 +48,8 @@ let package = Package(
         .executableTarget(
             name: "MacrosPlayground",
             dependencies: [
-                "MacrosInterface"
+                "MacrosInterface",
+                .product(name: "ReactorKit", package: "ReactorKit")
             ],
             path: "Sources/Macros/Playground"
         ),
@@ -55,7 +57,7 @@ let package = Package(
         .testTarget(
             name: "Bibbi-MacroTests",
             dependencies: [
-                "MacrosInterface",
+                "MacrosImplementation",
                 .product(name: "SwiftSyntaxMacrosTestSupport", package: "swift-syntax"),
             ],
             path: "Tests/Macros"

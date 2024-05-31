@@ -44,4 +44,34 @@ final class CodableMacroTests: XCTestCase {
         
     }
     
+    func testCodableKeyMacro() throws {
+        
+        assertMacroExpansion(
+            """
+            @Codable
+            struct Member {
+                var name: String
+                @CodableKey(name: "day_of_birth") var dayOfBirth: String
+            }
+            """,
+            expandedSource:
+            """
+            struct Member {
+                var name: String
+                var dayOfBirth: String
+            
+                private enum CodingKeys: String, CodingKey {
+                    case name
+                    case dayOfBirth = "day_of_birth"
+                }
+            }
+            
+            extension Member: Codable {
+            }
+            """,
+            macros: testMacros
+        )
+        
+    }
+    
 }

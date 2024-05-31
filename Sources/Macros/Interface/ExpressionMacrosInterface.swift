@@ -18,8 +18,9 @@ import Foundation
 /// ```swift
 /// let apple = #URL("https://www.apple.com/kr")
 ///
-/// // Expanding a macro
+/// // Begin expansion of "#URL"
 /// let apple = URL(string: "https://www.apple.com/kr")
+/// // End expansion of "#URL"
 /// ```
 ///
 /// - Note: 코드가 확장되기 전에 확장 단계에서 인자로 주어진 문자열 리터럴이 유효한지 확인하기에 런타임 도중 Error를 방출하지 않습니다.
