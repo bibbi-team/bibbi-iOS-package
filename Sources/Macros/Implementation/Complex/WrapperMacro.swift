@@ -21,7 +21,7 @@ extension WrapperMacro: MemberMacro {
         guard
             let _ = declaration.as(ClassDeclSyntax.self)
         else {
-            throw MacroError.message("해당 매크로는 Class에만 적용할 수 있습니다.")
+            throw MacroError.message("이 매크로는 Class에만 적용할 수 있습니다.")
         }
         
         guard

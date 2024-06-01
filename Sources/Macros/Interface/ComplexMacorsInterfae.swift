@@ -11,11 +11,11 @@ import ReactorKit
 
 /// 타입이 Codable 프로토콜을 준수하게 합니다.
 ///
-/// 해당 매크로는 적용한 타입에 Codable 프로토콜을 준수하는 Extension과 CodingKeys 코드를 확장합니다.
+/// 이 매크로는 적용한 타입에 Codable 프로토콜을 준수하는 Extension과 CodingKeys 코드를 전개합니다.
 ///
-/// CodingKey를 바꾸고 싶다면 멤버에 @CodableKey(name:) 매크로를 적용해야 합니다. 해당 매크로는 단독으로 사용할 수 없으며, 반드시 @Codable 매크로와 함께 작성해야 합니다.
+/// CodingKey를 바꾸고 싶다면 멤버에 @CodableKey(name:) 매크로를 적용해야 합니다. 이 매크로는 단독으로 사용할 수 없으며, 반드시 @Codable 매크로와 함께 작성해야 합니다.
 ///
-/// 아래는 확장되기 전과 후의 코드를 보여줍니다.
+/// 아래는 전개되기 전과 후의 코드를 보여줍니다.
 /// ```swift
 /// @Codable
 /// struct MemberDTO {
@@ -42,7 +42,7 @@ import ReactorKit
 /// extension MemberDTO: Codable { }
 /// // End expansion of "@Codable"
 /// ```
-/// - Warning: 해당 매크로는 Struct에만 적용할 수 있습니다.
+/// - Warning: 이 매크로는 Struct에만 적용할 수 있습니다.
 ///
 /// - Author: 김소월
 ///
@@ -55,7 +55,7 @@ public macro Codable() = #externalMacro(
 
 /// CodingKey를 바꿉니다.
 ///
-/// 해당 매크로를 적용한 멤버의 CodingKey를 바꾸어 CodingKeys 코드를 확장합니다.
+/// 이 매크로를 적용한 멤버의 CodingKey를 바꾸어 CodingKeys 코드를 전개합니다.
 ///
 /// - Parameters:
 ///     - name: CodingKey를 입력합니다.
@@ -76,11 +76,11 @@ public macro CodableKey(name: String) = #externalMacro(
 
 /// 타입이 BaseWrapper 프로토콜을 준수하게 합니다.
 ///
-/// 해당 매크로를 적용한 타입에 BaseWrapper 프로토콜을 준수하게 하고 make() 메서드 및 viewController, reactor 계산 프로퍼티를 추가합니다.
+/// 이 매크로를 적용한 타입에 BaseWrapper 프로토콜을 준수하게 하고 make() 메서드 및 viewController, reactor 계산 프로퍼티를 추가합니다.
 ///
 /// 첫 번째 Generic 타입은 Reactor 프로토콜을 준수하는 타입이어야 하고, 두 번째 Generic 타입은 ReactorKit.View 프로토콜을 준수하는 타입이어야 합니다.
 ///
-/// 아래는 확장되기 전과 후의 코드를 보여줍니다.
+/// 아래는 전개되기 전과 후의 코드를 보여줍니다.
 /// ```swift
 /// @Wrapper<HomeReactor, HomeViewController>
 /// public class HomeViewControllerWrapper {
@@ -117,11 +117,10 @@ public macro CodableKey(name: String) = #externalMacro(
 ///     associatedtype V: ReactorKit.View
 ///
 ///     func makeReactor() -> R
-///     func makeViewController() -> V
 /// }
 /// ```
 ///
-/// - Warning: 해당 매크로는 Class에만 적용할 수 있습니다.
+/// - Warning: 이 매크로는 Class에만 적용할 수 있습니다.
 ///
 /// - Author: 김소월
 ///
@@ -138,7 +137,6 @@ public protocol BaseWrapper {
     associatedtype V: ReactorKit.View
     
     func makeReactor() -> R
-    func makeViewController() -> V
 }
 
 

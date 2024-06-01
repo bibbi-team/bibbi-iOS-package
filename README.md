@@ -7,10 +7,11 @@
 ### Macros
 
 - [v] [@Codable]()
-- [v] [@CodableKey]()
+- [v] [@CodableKey(_:)]()
 - [v] [@Deprecated]()
-- [v] [@DependencyValue]()
-- [v] [@Wrapepr]()
+- [v] [@DependencyValue(for:)]()
+- [v] [@DependencyValues]()
+- [v] [@Wrapper]()
 
 ## Requirements
 

@@ -21,7 +21,7 @@ extension CodableMacro: MemberMacro {
         guard
             let structDecl = declaration.as(StructDeclSyntax.self)
         else {
-            throw MacroError.message("해당 매크로는 Struct에만 적용할 수 있습니다.")
+            throw MacroError.message("이 매크로는 Struct에만 적용할 수 있습니다.")
         }
         
         let memberList = structDecl.memberBlock.members
