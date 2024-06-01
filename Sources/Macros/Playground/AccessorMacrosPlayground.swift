@@ -47,7 +47,7 @@ struct MemberRepoKey: DependencyKey {
 }
 
 // DependencyValues
-@DependencyVales
+@DependencyOrganizer
 extension DependencyValues {
     var meRepository: MeRepositoryProtocol
     @DependencyValue(for: MemberRepoKey.self)

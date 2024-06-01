@@ -10,7 +10,7 @@ import SwiftSyntaxBuilder
 import SwiftSyntaxMacros
 import SyntaxHelper
 
-public struct DependencyValuesMacro: MemberAttributeMacro {
+public struct DependencyOrganizerMacro: MemberAttributeMacro {
     
     public static func expansion(
         of node: AttributeSyntax,

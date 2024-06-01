@@ -51,7 +51,7 @@ public macro Deprecated() = #externalMacro(
 /// - Warning: 이 매크로는 Extension에만 적용할 수 있습니다.
 ///
 @attached(memberAttribute)
-public macro DependencyVales() = #externalMacro(
+public macro DependencyOrganizer() = #externalMacro(
     module: "MacrosImplementation",
-    type: "DependencyValuesMacro"
+    type: "DependencyOrganizerMacro"
 )

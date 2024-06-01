@@ -6,12 +6,19 @@
 
 ### Macros
 
-- [v] [@Codable]()
-- [v] [@CodableKey(_:)]()
-- [v] [@Deprecated]()
-- [v] [@DependencyValue(for:)]()
-- [v] [@DependencyValues]()
-- [v] [@Wrapper]()
+- [x] ~~[#URL]()~~ _(Deprecated)_
+
+- [x] [@Codable]()
+- [x] [@CodableKey(_:)]()
+- [x] [@Deprecated]()
+- [x] [@DependencyValue(for:)]()
+- [x] [@DependencyValues]()
+- [x] [@Wrapper]()
+
+### Libraries
+
+- [x] [Dependencies]()
+- [x] [ReactorKit]()
 
 ## Requirements
 
