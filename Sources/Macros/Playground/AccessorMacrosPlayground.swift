@@ -42,7 +42,7 @@ class MemberRepository: MemberRepositoryProtocol {
 struct MeRepositoryKey: DependencyKey {
     static let liveValue: MeRepositoryProtocol = MeRepository()
 }
-struct MemberRepositoryKey: DependencyKey {
+struct MemberRepoKey: DependencyKey {
     static let liveValue: MemberRepositoryProtocol = MemberRepository()
 }
 
@@ -50,8 +50,8 @@ struct MemberRepositoryKey: DependencyKey {
 @DependencyVales
 extension DependencyValues {
     var meRepository: MeRepositoryProtocol
-    @DependencyValue(for: MemberRepositoryKey.self)
-    var memberRepository: MemberRepositoryProtocol
+    @DependencyValue(for: MemberRepoKey.self)
+    var memberRepo: MemberRepositoryProtocol
 }
 
 
@@ -65,7 +65,7 @@ func runAccessorMacrosPlayground() {
     let me = meRepository.request()
     print("Requested Data from MeRepository: \(me)")
     
-    @Dependency(\.memberRepository) var memberRepository
+    @Dependency(\.memberRepo) var memberRepository
     let members = memberRepository.request()
     print("Requested Data from MemberRepository: \(members)")
     
