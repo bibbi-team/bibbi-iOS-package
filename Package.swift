@@ -14,11 +14,6 @@ let package = Package(
         .library(
             name: "Macros",
             targets: ["MacrosInterface"]
-        ),
-        
-        .executable(
-            name: "MacrosPlayground",
-            targets: ["MacrosPlayground"]
         )
     ],
     dependencies: [
