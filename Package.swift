@@ -7,39 +7,44 @@ import CompilerPluginSupport
 let package = Package(
     name: "Bibbi-Package",
     platforms: [
-        .macOS(.v10_15),
-            .iOS(.v13)
+        .iOS(.v15),
+        .macOS(.v10_15)
     ],
     products: [
         .library(
             name: "Macros",
             targets: ["MacrosInterface"]
-        ),
-        
-        .executable(
-            name: "MacrosPlayground",
-            targets: ["MacrosPlayground"]
         )
     ],
     dependencies: [
         .package(url: "https://github.com/apple/swift-syntax.git", from: "509.0.0"),
+        .package(url: "https://github.com/ReactorKit/ReactorKit.git", from: "3.2.0"),
+        .package(url: "https://github.com/pointfreeco/swift-dependencies", from: "1.3.0")
     ],
     targets: [
         .macro(
             name: "MacrosImplementation",
             dependencies: [
+                "MacrosHelper",
                 .product(name: "SwiftSyntax", package: "swift-syntax"),
                 .product(name: "SwiftSyntaxMacros", package: "swift-syntax"),
                 .product(name: "SwiftCompilerPlugin", package: "swift-syntax"),
-                .product(name: "SwiftDiagnostics", package: "swift-syntax")
+                .product(name: "SwiftDiagnostics", package: "swift-syntax"),
             ],
             path: "Sources/Macros/Implementation"
+        ),
+        
+        .target(
+            name: "MacrosHelper",
+            path: "Sources/Macros/Helper"
         ),
 
         .target(
             name: "MacrosInterface",
             dependencies: [
-                "MacrosImplementation"
+                "MacrosImplementation",
+                .product(name: "ReactorKit", package: "ReactorKit"),
+                .product(name: "Dependencies", package: "swift-dependencies")
             ],
             path: "Sources/Macros/Interface"
         ),
@@ -55,7 +60,7 @@ let package = Package(
         .testTarget(
             name: "Bibbi-MacroTests",
             dependencies: [
-                "MacrosInterface",
+                "MacrosImplementation",
                 .product(name: "SwiftSyntaxMacrosTestSupport", package: "swift-syntax"),
             ],
             path: "Tests/Macros"

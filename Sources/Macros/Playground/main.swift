@@ -7,6 +7,10 @@
 
 import MacrosInterface
 
+// MARK: - Accessor Macro
+
+runAccessorMacrosPlayground()
+
 
 // MARK: - Complex Macro
 
