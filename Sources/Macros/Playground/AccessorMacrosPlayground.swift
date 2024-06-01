@@ -10,30 +10,50 @@ import MacrosInterface
 
 // MARK: - DependencyValue Accessor
 
-protocol RepositoryProtocol {
+protocol MeRepositoryProtocol {
     func request() -> String
 }
-class Repository: RepositoryProtocol {
+class MeRepository: MeRepositoryProtocol {
     func request() -> String {
-        return "Hello, World!"
+        return """
+        {
+            \"name\":\"김소월\",
+            \"day_of_birth\":\"1998-03-21\",
+            \"age\": 27
+        }
+        """
     }
 }
 
-struct RepositoryKey: DependencyKey {
-    static let liveValue: RepositoryProtocol = Repository()
+protocol MemberRepositoryProtocol {
+    func request() -> String
 }
+class MemberRepository: MemberRepositoryProtocol {
+    func request() -> String {
+        return """
+        {
+            \"members\":\"[김소월, 김제니, 마미미]\",
+        }
+        """
+    }
+}
+
+// DependencyKey
+struct MeRepositoryKey: DependencyKey {
+    static let liveValue: MeRepositoryProtocol = MeRepository()
+}
+struct MemberRepositoryKey: DependencyKey {
+    static let liveValue: MemberRepositoryProtocol = MemberRepository()
+}
+
+// DependencyValues
+@DependencyVales
 extension DependencyValues {
-    @DependencyValue(for: RepositoryKey.self)
-    var repository: RepositoryProtocol
+    var meRepository: MeRepositoryProtocol
+    @DependencyValue(for: MemberRepositoryKey.self)
+    var memberRepository: MemberRepositoryProtocol
 }
 
-class UseCase {
-    @Dependency(\.repository) private var repository: RepositoryProtocol
-    
-    func execute() -> String {
-        repository.request()
-    }
-}
 
 
 
@@ -41,7 +61,12 @@ class UseCase {
 
 func runAccessorMacrosPlayground() {
     
-    let usecase = UseCase()
-    print("DepdencyValue Test: \(usecase.execute())")
+    @Dependency(\.meRepository) var meRepository
+    let me = meRepository.request()
+    print("Requested Data from MeRepository: \(me)")
+    
+    @Dependency(\.memberRepository) var memberRepository
+    let members = memberRepository.request()
+    print("Requested Data from MemberRepository: \(members)")
     
 }

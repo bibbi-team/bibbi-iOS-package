@@ -25,12 +25,18 @@ let package = Package(
         .macro(
             name: "MacrosImplementation",
             dependencies: [
+                "MacrosHelper",
                 .product(name: "SwiftSyntax", package: "swift-syntax"),
                 .product(name: "SwiftSyntaxMacros", package: "swift-syntax"),
                 .product(name: "SwiftCompilerPlugin", package: "swift-syntax"),
                 .product(name: "SwiftDiagnostics", package: "swift-syntax"),
             ],
             path: "Sources/Macros/Implementation"
+        ),
+        
+        .target(
+            name: "MacrosHelper",
+            path: "Sources/Macros/Helper"
         ),
 
         .target(

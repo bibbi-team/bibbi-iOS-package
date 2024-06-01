@@ -16,6 +16,7 @@ struct Bibbi_MacroPlugin: CompilerPlugin {
         CodableMacro.self,
         WrapperMacro.self,
         URLMacro.self,
+        DependencyValuesMacro.self,
         DeprecatedMacro.self
     ]
 }

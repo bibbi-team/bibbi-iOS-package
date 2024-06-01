@@ -18,3 +18,12 @@ public macro Deprecated() = #externalMacro(
     module: "MacrosImplementation",
     type: "DeprecatedMacro"
 )
+
+
+// MARK: - Dependency Values Member Attribute
+
+@attached(memberAttribute)
+public macro DependencyVales() = #externalMacro(
+    module: "MacrosImplementation",
+    type: "DependencyValuesMacro"
+)
