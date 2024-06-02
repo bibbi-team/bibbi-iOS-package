@@ -11,7 +11,7 @@ import MacrosInterface
 // MARK: - Codable Complex
 
 @Codable
-public struct MemberDTO {
+struct MemberDTO {
     var name: String
     @CodableKey(name: "day_of_birth") var dayOfBirth: String
     var age: Int
@@ -25,47 +25,100 @@ public struct MemberDTO {
 import UIKit
 import ReactorKit
 
-public class SomeReactor: Reactor {
-    public typealias Action = NoAction
+class HomeReactor {
+    typealias Action = NoAction
     
-    public struct State { }
+    struct State { }
     
-    public var initialState: State = State()
+    var initialState: State = State()
 }
 
-public class SomeViewController: UIViewController, ReactorKit.View {
-    public typealias Reactor = SomeReactor
-    public var disposeBag = DisposeBag()
+extension HomeReactor: Reactor { }
+
+extension HomeReactor: Identifiable {
+    public var id: UUID { UUID() }
+}
+
+extension HomeReactor: Equatable {
+    static func == (
+        lhs: HomeReactor,
+        rhs: HomeReactor
+    ) -> Bool {
+        return lhs.id == rhs.id
+    }
+}
+
+class HomeViewController: UIViewController, ReactorKit.View {
+    typealias Reactor = HomeReactor
+    var disposeBag = DisposeBag()
     
-    public convenience init(reactor: Reactor) {
+    convenience init(reactor: Reactor) {
         self.init()
         self.reactor = reactor
     }
     
-    public override func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    public func bind(reactor: SomeReactor) { }
+    func bind(reactor: HomeReactor) { }
 }
 
-@Wrapper<SomeReactor, SomeViewController>
-public class SomeViewControlllerWrapper {
+@Wrapper<HomeReactor, HomeViewController>
+class HomeViewControllerWrapper {
     
-    public func makeReactor() -> R {
-        return SomeReactor()
+    func makeReactor() -> R {
+        return HomeReactor()
     }
     
 }
 
 
 func runWrapperMacro() {
-    let someViewController = SomeViewControlllerWrapper().viewController
-    print("SomeViewController: \(someViewController)")
+    let vc = HomeViewControllerWrapper().viewController
+    print("HomeViewController: \(vc)")
 }
 
 #endif
 
+
+
+
+// MARK: - Wrapper View Complex
+
+#if canImport(UIKit)
+
+import UIKit
+
+class HomeView: UIView, ReactorKit.View {
+    typealias Reactor = HomeReactor
+    var disposeBag = DisposeBag()
+    
+    convenience init(reactor: Reactor) {
+        self.init()
+        self.reactor = reactor
+    }
+    
+    func bind(reactor: HomeReactor) { }
+}
+
+@WrapperView<HomeReactor, HomeView>
+class HomeViewWrapper {
+    
+    func makeReactor() -> R {
+        return HomeReactor()
+    }
+    
+}
+
+func runWrapperViewMacro() {
+    let v = HomeViewWrapper().view
+    print("HomeView: \(v)")
+}
+
+
+
+#endif
 
 
 func runComplexMacorsPlayground() {
@@ -86,6 +139,7 @@ func runComplexMacorsPlayground() {
     #if canImport(UIKit)
     
     runWrapperMacro()
+    runWrapperViewMacro()
     
     #endif
     

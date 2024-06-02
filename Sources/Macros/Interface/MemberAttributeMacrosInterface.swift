@@ -20,7 +20,7 @@ public macro Deprecated() = #externalMacro(
 )
 
 
-// MARK: - Dependency Values Member Attribute
+// MARK: - Dependency Organizer MemberAttribute
 
 
 /// @DependencyValue 매크로를  프로퍼티에 전개합니다.

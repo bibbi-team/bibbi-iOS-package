@@ -36,7 +36,7 @@ public struct DependencyOrganizerMacro: MemberAttributeMacro {
         }
         
         if !varDecl.attributes.isAttributeApplied("DependencyValue") {
-            let capitalizedIdentifier = identifier.capitalizeFirstLetter()
+           let capitalizedIdentifier = identifier.makeFirstLetterLowercase()
             
             return [
                 """

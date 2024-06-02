@@ -12,8 +12,9 @@
 - [x] [@CodableKey(_:)]()
 - [x] [@Deprecated]()
 - [x] [@DependencyValue(for:)]()
-- [x] [@DependencyValues]()
+- [x] [@DependencyOrganizer]()
 - [x] [@Wrapper]()
+- [x] (@WrapperView)
 
 ### Libraries
 

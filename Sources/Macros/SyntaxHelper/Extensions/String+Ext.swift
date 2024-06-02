@@ -14,7 +14,7 @@ public extension String {
     /// - Returns: String
     /// - Author: 김소월
     ///
-    func capitalizeFirstLetter() -> String {
+    func makeFirstLetterLowercase() -> String {
         return prefix(1).uppercased() + dropFirst()
     }
     

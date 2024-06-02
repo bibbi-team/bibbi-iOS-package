@@ -11,7 +11,7 @@ import MacrosImplementation
 import XCTest
 
 fileprivate let testMacros: [String: Macro.Type] = [
-    "DependencyValue": DependecyValueMacro.self
+    "DependencyValue": DependencyValueMacro.self
 ]
 
 final class DepdencyValueMacroTests: XCTestCase {
