@@ -46,7 +46,7 @@ struct MemberRepoKey: DependencyKey {
     static let liveValue: MemberRepositoryProtocol = MemberRepository()
 }
 
-// DependencyValues
+// DependencyOrganizer
 @DependencyOrganizer
 extension DependencyValues {
     var meRepository: MeRepositoryProtocol

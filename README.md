@@ -10,14 +10,16 @@
 
 - [x] [@Codable]()
 - [x] [@CodableKey(_:)]()
-- [x] [@Deprecated]()
-- [x] [@DependencyValue(for:)]()
+- [x] ~~[@Deprecated]()~~ _(Deprecated)_
+- [x] ~~[@DependencyValue(for:)]()~~ _(Deprecated)_
 - [x] [@DependencyOrganizer]()
+- [x] [@Reactor]() 
 - [x] [@Wrapper]()
 - [x] (@WrapperView)
 
 ### Libraries
 
+- [x] [DIContainer]()
 - [x] [Dependencies]()
 - [x] [ReactorKit]()
 
@@ -30,4 +32,4 @@
 
 |   버전  |          내용         |
 | :----: | :------------------: |
-| - | - |
+| v0.1.0 | `@Codable`, `@Wrapper` 매크로 구현 등 |

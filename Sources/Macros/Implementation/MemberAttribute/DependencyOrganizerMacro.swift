@@ -8,7 +8,7 @@
 import SwiftSyntax
 import SwiftSyntaxBuilder
 import SwiftSyntaxMacros
-import SyntaxHelper
+import SwiftSyntaxHelper
 
 public struct DependencyOrganizerMacro: MemberAttributeMacro {
     

@@ -50,6 +50,7 @@ public macro Deprecated() = #externalMacro(
 ///
 /// - Warning: 이 매크로는 Extension에만 적용할 수 있습니다.
 ///
+@available(*, deprecated)
 @attached(memberAttribute)
 public macro DependencyOrganizer() = #externalMacro(
     module: "MacrosImplementation",
