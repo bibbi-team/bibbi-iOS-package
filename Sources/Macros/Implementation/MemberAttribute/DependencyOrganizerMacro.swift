@@ -5,12 +5,12 @@
 //  Created by 김건우 on 6/1/24.
 //
 
-import MacrosHelper
 import SwiftSyntax
 import SwiftSyntaxBuilder
 import SwiftSyntaxMacros
+import SwiftSyntaxHelper
 
-public struct DependencyValuesMacro: MemberAttributeMacro {
+public struct DependencyOrganizerMacro: MemberAttributeMacro {
     
     public static func expansion(
         of node: AttributeSyntax,
@@ -36,7 +36,7 @@ public struct DependencyValuesMacro: MemberAttributeMacro {
         }
         
         if !varDecl.attributes.isAttributeApplied("DependencyValue") {
-            let capitalizedIdentifier = identifier.capitalizeFirstLetter()
+           let capitalizedIdentifier = identifier.makeFirstLetterLowercase()
             
             return [
                 """

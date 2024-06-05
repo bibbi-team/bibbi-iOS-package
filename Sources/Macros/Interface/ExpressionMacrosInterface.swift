@@ -26,6 +26,7 @@ import Foundation
 /// - Note: 매크로가 전개되기 전에 전개 단계에서 매개변수로 넘겨진 문자열 리터럴이 유효한지 확인하기에 런타임 경고가 발생할 여지를 차단합니다.
 /// - Author: 김소월
 ///
+@available(*, deprecated)
 @freestanding(expression)
 public macro URL(_ s: String) -> URL = #externalMacro(
     module: "MacrosImplementation",

@@ -119,6 +119,7 @@ public macro CodableKey(name: String) = #externalMacro(
 ///     func makeReactor() -> R
 /// }
 /// ```
+/// 이 매크로는 첨부된 선언의 접근 제어자에 따라 전개되는 멤버의 접근 제어자가 바뀝니다. 예를 들어, 첨부 Class가 public 접근 제어자를 가진다면 전개되는 멤버도 public 접근 제어자를 가집니다.
 ///
 /// - Warning: 이 매크로는 Class에만 적용할 수 있습니다.
 ///
@@ -139,5 +140,67 @@ public protocol BaseWrapper {
     func makeReactor() -> R
 }
 
+
+
+// MARK: - Wrapper View Complex
+
+
+/// 타입이 BaseWrapper 프로토콜을 준수하게 합니다.
+///
+/// 이 매크로를 적용한 타입에 BaseWrapper 프로토콜을 준수하게 하고 make() 메서드 및 view, reactor 계산 프로퍼티를 추가합니다.
+///
+/// 첫 번째 Generic 타입은 Reactor 프로토콜을 준수하는 타입이어야 하고, 두 번째 Generic 타입은 ReactorKit.View 프로토콜을 준수하는 타입이어야 합니다.
+///
+/// 아래는 전개되기 전과 후의 코드를 보여줍니다.
+/// ```swift
+/// @Wrapper<RankingReactor, RankingView>
+/// public class HomeViewControllerWrapper {
+///     public func makeReactor() -> R {
+///         return HomeReactor()
+///     }
+///
+///     // Begin expansion of "@WrapperView"
+///     public typealias R = RankingReactor
+///     public typealias V = RankingView
+///
+///     public func makeView() -> V {
+///          return RankingView(reactor: makeReactor())
+///     }
+///
+///     public var view: V {
+///         return makeView()
+///     }
+///
+///     public var reactor: R {
+///         return makeReactor()
+///     }
+///     // End expansion of "@WrapperView"
+/// }
+/// // Begin expansion of "@WrapperView"
+/// extension HomeViewControllerWrapper: BaseWrapper { }
+/// // End expansion of "@WrapperView"
+/// ```
+///
+/// - 참고:  BaseWrapper 프로토콜은 아래와 같이 선언되어 있습니다.
+/// ```swift
+/// public protocol BaseWrapper {
+///     associatedtype R: Reactor
+///     associatedtype V: ReactorKit.View
+///
+///     func makeReactor() -> R
+/// }
+/// ```
+/// 이 매크로는 첨부된 선언의 접근 제어자에 따라 전개되는 멤버의 접근 제어자가 바뀝니다. 예를 들어, 첨부 Class가 public 접근 제어자를 가진다면 전개되는 멤버도 public 접근 제어자를 가집니다.
+///
+/// - Warning: 이 매크로는 Class에만 적용할 수 있습니다.
+///
+/// - Author: 김소월
+///
+@attached(member, names: arbitrary)
+@attached(extension, conformances: BaseWrapper)
+public macro WrapperView<R, V>() = #externalMacro(
+    module: "MacrosImplementation",
+    type: "WrapperViewMacro"
+)
 
 

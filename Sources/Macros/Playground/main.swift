@@ -22,6 +22,11 @@ runComplexMacorsPlayground()
 runExressionMacrosPlayground()
 
 
+// MARK: - Extension Macros
+
+runExtensionMacrosPlayground()
+
+
 // MARK: - MemberAttribute Macros
 
 runMemberAttributeMacrosPlayground()

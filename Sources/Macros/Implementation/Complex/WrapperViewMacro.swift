@@ -2,16 +2,16 @@
 //  File.swift
 //  
 //
-//  Created by 김건우 on 5/31/24.
+//  Created by 김건우 on 6/3/24.
 //
 
 import SwiftSyntax
 import SwiftSyntaxBuilder
 import SwiftSyntaxMacros
 
-public struct WrapperMacro { }
+public struct WrapperViewMacro { }
 
-extension WrapperMacro: MemberMacro {
+extension WrapperViewMacro: MemberMacro {
     
     public static func expansion(
         of node: AttributeSyntax,
@@ -50,14 +50,14 @@ extension WrapperMacro: MemberMacro {
             """,
             
             """
-            \(scope)func makeViewController() -> V {
+            \(scope)func makeView() -> V {
                 return \(lastGenericType)(reactor: makeReactor())
             }
             """,
             
             """
-            \(scope)var viewController: V {
-                return makeViewController()
+            \(scope)var view: V {
+                return makeView()
             }
             """,
             """
@@ -70,7 +70,7 @@ extension WrapperMacro: MemberMacro {
     
 }
 
-extension WrapperMacro: ExtensionMacro {
+extension WrapperViewMacro: ExtensionMacro {
     
     public static func expansion(
         of node: AttributeSyntax,
@@ -85,3 +85,4 @@ extension WrapperMacro: ExtensionMacro {
     }
     
 }
+
