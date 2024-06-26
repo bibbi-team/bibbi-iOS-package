@@ -20,29 +20,29 @@ final class WrapperMacroTests: XCTest {
         
         assertMacroExpansion(
             """
-            @Wrapper<SomeReactor, SomeViewController>
-            public class SomeViewControlllerWrapper {
+            @Wrapper<TestReactor, TestViewController>
+            public class TestViewControllerWrapper {
                 
                 public func makeReactor() -> R {
-                    return SomeReactor()
+                    return TestReactor()
                 }
                 
             }
             """,
             expandedSource:
             """
-            public class SomeViewControlllerWrapper {
+            public class TestViewControlllerWrapper {
                 
                 public func makeReactor() -> R {
-                    return SomeReactor()
+                    return TestReactor()
                 }
             
-                public typealias R = SomeReactor
+                public typealias R = TestReactor
 
-                public typealias V = SomeViewController
+                public typealias V = TestViewController
 
                 public func makeViewController() -> V {
-                    return SomeViewController(reactor: makeReactor())
+                    return TestViewController(reactor: makeReactor())
                 }
 
                 public var viewController: V {

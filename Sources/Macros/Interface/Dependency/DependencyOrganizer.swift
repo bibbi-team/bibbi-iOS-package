@@ -2,26 +2,8 @@
 //  File.swift
 //  
 //
-//  Created by 김건우 on 5/25/24.
+//  Created by 김건우 on 6/26/24.
 //
-
-// MARK: - Deprecated MemberAttribute
-
-/// 모든 멤버(프로퍼티, 함수 등)에 deprecated 기호를 전개합니다.
-///
-/// 이 매크로를 적용한 타입에 속한 모든 멤버(프로퍼티, 함수, 타입아일리어스 등)에 deprecated 기호를 붙입니다.
-///
-/// - Author: 김소월
-///
-@attached(memberAttribute)
-public macro Deprecated() = #externalMacro(
-    module: "MacrosImplementation",
-    type: "DeprecatedMacro"
-)
-
-
-// MARK: - Dependency Organizer MemberAttribute
-
 
 /// @DependencyValue 매크로를  프로퍼티에 전개합니다.
 ///
@@ -44,15 +26,15 @@ public macro Deprecated() = #externalMacro(
 ///
 /// 그렇기 때문에 코드 작성자는 DepdendencyKey 프로토콜 준수 객체의 이름을 `MeRepositoryKey`처럼 일정한 규칙에 따라 작성해야 합니다.
 ///
-/// 부득이한 경우에는 직접 프로퍼티에 `@DependencyValue` 매크로를 적용해 다른 규칙을 적용할 수 있습니다. 이 매크로가 적용되어도 @DependencyValues 매크로는  여전히 사용가능합니다. 해당 매크로는 @DependencyValue 매크로가 붙은 프로퍼티를 무시합니다.
+/// 부득이한 경우에는 직접 프로퍼티에 `@DependencyValue` 매크로를 적용해 다른 규칙을 적용할 수 있습니다. 이 매크로가 적용되어도 @DependencyOrganizer 매크로는  여전히 사용가능합니다. 해당 매크로는 @DependencyValue 매크로가 붙은 프로퍼티를 무시합니다.
 ///
 /// - NOTE: 의존성 주입에 관한 내용은 [여기](https://swiftpackageindex.com/pointfreeco/swift-dependencies/main/documentation/dependencies)를 참조하세요.
 ///
 /// - Warning: 이 매크로는 Extension에만 적용할 수 있습니다.
 ///
-@available(*, deprecated)
 @attached(memberAttribute)
 public macro DependencyOrganizer() = #externalMacro(
     module: "MacrosImplementation",
     type: "DependencyOrganizerMacro"
 )
+

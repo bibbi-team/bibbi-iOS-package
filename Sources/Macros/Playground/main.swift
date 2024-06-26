@@ -7,29 +7,4 @@
 
 import MacrosInterface
 
-// MARK: - Accessor Macro
-
-runAccessorMacrosPlayground()
-
-
-// MARK: - Complex Macro
-
-runComplexMacorsPlayground()
-
-
-// MARK: - Expression Macros
-
-runExressionMacrosPlayground()
-
-
-// MARK: - Extension Macros
-
-runExtensionMacrosPlayground()
-
-
-// MARK: - MemberAttribute Macros
-
-runMemberAttributeMacrosPlayground()
-
-
 
