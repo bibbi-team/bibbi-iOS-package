@@ -9,8 +9,13 @@ import SwiftSyntax
 
 public extension DeclGroupSyntax {
     
-    // 문서 작성
-    
+    /// 타입의 접근 제어자를 가져옵니다. 
+    /// 접근 제어자가 없다면 internal 접근 제어자를 반환합니다.
+    ///
+    /// - Returns: DeclModifierSyntax 타입의 접근 제어자
+    ///
+    /// - Author: 김소월
+    ///
     func getAccessControl() -> DeclModifierSyntax {
         modifiers
             .first(where: { modifier in

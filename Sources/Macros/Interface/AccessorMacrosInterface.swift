@@ -32,7 +32,6 @@ import Dependencies
 ///
 /// Author: - 김소월
 ///
-@available(*, deprecated)
 @attached(accessor)
 public macro DependencyValue(for: any DependencyKey.Type) = #externalMacro(
     module: "MacrosImplementation",

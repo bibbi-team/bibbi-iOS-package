@@ -10,16 +10,14 @@
 
 - [x] [@Codable]()
 - [x] [@CodableKey(_:)]()
-- [x] ~~[@Deprecated]()~~ _(Deprecated)_
-- [x] ~~[@DependencyValue(for:)]()~~ _(Deprecated)_
+- [x] [@Deprecated]()
+- [x] [@DependencyValue(for:)]()
 - [x] [@DependencyOrganizer]()
-- [x] [@Reactor]() 
 - [x] [@Wrapper]()
-- [x] (@WrapperView)
+- [x] [@WrapperView)]()
 
 ### Libraries
 
-- [x] [DIContainer]()
 - [x] [Dependencies]()
 - [x] [ReactorKit]()
 
