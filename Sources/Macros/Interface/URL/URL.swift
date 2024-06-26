@@ -1,13 +1,11 @@
 //
-//  ExpressionMacrosInterface.swift
+//  File.swift
+//  
 //
-//
-//  Created by 김건우 on 5/24/24.
+//  Created by 김건우 on 6/26/24.
 //
 
 import Foundation
-
-// MARK: - URL Expression
 
 /// 유효한 URL을 반환합니다.
 ///

@@ -2,12 +2,10 @@
 //  File.swift
 //  
 //
-//  Created by 김건우 on 5/31/24.
+//  Created by 김건우 on 6/26/24.
 //
 
 import Dependencies
-
-// MARK: - DependecyValue Accessor
 
 /// 의존성 주입을 위한 getter/setter 코드를 전개합니다.
 ///
